@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+    <div id="ocv-feed"></div>
+    <script src="//s3.amazonaws.com/myocv/ocvapps/ocv-files/feed-widget/ocv-feed-widget-v2.js"></script>
+    <script src="//s3.amazonaws.com/myocv/ocvapps/ocv-files/feed-widget/listjs/list.min.js"></script>
+    <script type="text/javascript">
+      var alerts = new ocvFeedWidget();
+      alerts.init({
+        "width": "responsive",
+        "min-height": 800,
+        "URL": "https://apps.myocv.com/feed/alerts/a66661401",
+        "container": "ocv-feed",
+        "type": "alert",
+      });
+      alerts.gen();
+      var options = {
+        valueNames: [
+          "ocv-feed-widget-item-title",
+          "ocv-feed-widget-item-content",
+        ],
+        page: 10,
+        pagination: true,
+      };
+      setTimeout(function () {
+        var ocvFeedList = new List("ocv-feed-entries", options);
+      }, 2000);
+    </script>
+  </body>
+</html>
